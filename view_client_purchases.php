@@ -5,7 +5,7 @@ if(!isset($_GET['id_client'])){
     exit;
 }else{
     $id_client = $_GET['id_client'];
-    $addsubmit = true;
+    $status = 'null';
 }
 
 $sql_cname_query = "SELECT names, lastnames FROM client WHERE id_client = $id_client";
@@ -29,7 +29,12 @@ $lastnames = $row_cname['lastnames'];
 <body>
     <div class="container my-5">
         <h1><?php echo $names . ' ' . $lastnames . ' Purchase List' ?></h1>
-        <a class="btn btn-primary" href=<?php echo "'/smallshop/create_purchase.php?id_client=$id_client&addsubmit=$addsubmit'";?>><b>Add Purchase</b></a>
+        <div class="row">
+            <div class="col-12">
+                <a class="btn btn-danger" href="/smallshop/index.php"><b>Main Client List</b></a>
+                <a class="btn btn-primary" href=<?php echo "'/smallshop/create_purchase.php?id_client=$id_client'";?>><b>Add Purchase</b></a>
+            </div>
+        </div>
         <br>
         <table class="table">
             <thead>
@@ -58,7 +63,9 @@ $lastnames = $row_cname['lastnames'];
                                         WHERE 
                                             purchase.id_client = 1
                                         GROUP BY 
-                                            purchase.id_purchase, purchase.date";
+                                            purchase.id_purchase, purchase.date
+                                        ORDER BY
+                                            purchase.id_purchase ASC";
                 //pass query through connection
                 $result_purchases_query = $connection->query($sql_purchases_query);
 
@@ -66,7 +73,6 @@ $lastnames = $row_cname['lastnames'];
                 if(!$result_purchases_query){
                     die('Invalid query: ' . $connection->error);
                 }
-
                 //query is correct, retirieve purchase information until nothing left inside result
                 while($row_purchase = $result_purchases_query->fetch_assoc()){
                     echo "

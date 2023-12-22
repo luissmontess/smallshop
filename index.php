@@ -6,10 +6,10 @@
     <title>SmallShop</title>
     <link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
-<body>
+<body
     <div class = "container my-5">
-        <h2>Client List</h2>
-        <a class="btn btn-primary" href = "/smallshop/create.php" role="button">Add Client</a>
+        <h2>SmallShop Client List</h2>
+        <a class="btn btn-primary" href = "/smallshop/create.php" role="button"><b>Add Client</b></a>
         <br>
         <table class = "table">
             <thead>
@@ -57,7 +57,7 @@
                             <td>$row[purchases]</td>
                             <td>
                                 <a class='btn btn-primary btn-sm' href ='/smallshop/viewclient.php?id_client=$row[id_client]'><b>View Info</b></a>
-                                <a class='btn btn-danger btn-sm' href ='/smallshop/delete.php?id_client=$row[id_client]'><b>Delete</b></a>
+                                <!-- <a class='btn btn-danger btn-sm' href ='/smallshop/delete.php?id_client=$row[id_client]'><b>Delete</b></a>> -->
                             </td>
                         </tr>
                     ";
